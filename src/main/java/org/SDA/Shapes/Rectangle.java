@@ -18,8 +18,4 @@ public class Rectangle extends Shape {
     public Double getCircumference() {
         return 2 * (a + b);
     }
-
-    public void testChangeOnline() {
-        System.out.println("Hello, Online VS Code!");
-    }
 }
