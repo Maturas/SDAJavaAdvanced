@@ -1,4 +1,4 @@
-package org.SDA.LockedBox;
+package org.SDA.Generics;
 
 public class LockedBox<TValue, TPassword> {
     private final TPassword password;
