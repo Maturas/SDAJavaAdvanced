@@ -1,7 +1,7 @@
 package org.SDA.Polymorphism;
 
 public class Cat extends Animal {
-    protected Cat(String name) {
+    public Cat(String name) {
         super(name);
     }
 

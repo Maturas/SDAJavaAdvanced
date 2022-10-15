@@ -5,7 +5,7 @@ public class Example {
         // Perceived type is defined by variable's type
         // Actual type is defined by object's type
         // Perceived type: dog - Actual type: type
-        Dog dog = new Dog("Rex");
+        Dog dog = new Dog("Rex", 12, "German Shepherd");
         Cat cat = new Cat("Garfield");
 
         dog.sleep();
