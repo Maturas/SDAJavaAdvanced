@@ -30,14 +30,16 @@ public class ItemDatabase {
         items.add(new Item(3, "Pepper", 8.0));
 
         ItemDatabase db = new ItemDatabase(items);
+
+        // Imperative approach
         Optional<Item> optionalItem = db.getItem(2);
 
         if (optionalItem.isPresent()) {
             Item item = optionalItem.get();
             System.out.println(item.getName());
         }
-        else {
-            System.out.println("NOT FOUND");
-        }
+
+        // Functional approach
+        db.getItem(2).ifPresent(item -> System.out.println(item.getName()));
     }
 }

@@ -13,6 +13,13 @@ public class Calculator {
         return function.calculate(a, b);
     }
 
+    public Calculator runCalculations(CalculatorFunction functionA, CalculatorFunction functionB) {
+        Double newA = functionA.calculate(a, b);
+        Double newB = functionB.calculate(a, b);
+
+        return new Calculator(newA, newB);
+    }
+
     public Double getA() {
         return a;
     }
@@ -53,5 +60,33 @@ public class Calculator {
         // Lambda approach without variable - implement the Calculator Function interface directly as a paramter
         Double divResult = calculator.runCalculation((a, b) -> a / b);
         System.out.println(divResult);
+
+        // Calculation sequence
+        // A = 100 X
+        // B = 50 X
+        // A + B = 150 -> new A X
+        // B -> new B X
+        // 150, 50 X
+        // A * B = 7500 -> new A X
+        // B -> 3 X
+        // A / B = 2500 -> new A X
+        // B * 2 = 15000 -> new B X
+        // result = A + B
+
+        // Imperative approach - a sequence of instructions
+        Calculator calc = new Calculator(100.0, 50.0);
+        calc = new Calculator(calc.runCalculation((a, b) -> a + b), calc.getB());
+        calc = new Calculator(calc.runCalculation((a, b) -> a * b), 3.0);
+        calc = new Calculator(calc.runCalculation((a, b) -> a / b), calc.runCalculation((a, b) -> b * 2));
+        Double result = calc.runCalculation((a, b) -> a + b);
+        System.out.println(result);
+
+        // Functional approach - a sequence of functions, passing their results one to another
+        Double functionalResult = new Calculator(100.0, 50.0)
+                .runCalculations((a, b) -> a + b, (a, b) -> b)
+                .runCalculations((a, b) -> a * b, (a, b) -> 3.0)
+                .runCalculations((a, b) -> a / b, (a, b) -> b * 2)
+                .runCalculation((a, b) -> a + b);
+        System.out.println(functionalResult);
     }
 }
