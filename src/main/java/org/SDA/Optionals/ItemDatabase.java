@@ -3,7 +3,7 @@ package org.SDA.Optionals;
 import java.util.*;
 
 public class ItemDatabase {
-    private Set<Item> items;
+    private final Set<Item> items;
 
     public ItemDatabase(Set<Item> items) {
         this.items = items;
@@ -30,7 +30,7 @@ public class ItemDatabase {
         items.add(new Item(3, "Pepper", 8.0));
 
         ItemDatabase db = new ItemDatabase(items);
-        Optional<Item> optionalItem = db.getItem(0);
+        Optional<Item> optionalItem = db.getItem(2);
 
         if (optionalItem.isPresent()) {
             Item item = optionalItem.get();
