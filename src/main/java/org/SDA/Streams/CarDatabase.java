@@ -11,7 +11,6 @@ public class CarDatabase {
         this.cars = cars;
     }
 
-    // 4. Get all cars from given brand
     // 5. Get all cars from given, given engine type and given brand
 
     // 6. Get cheapest car
@@ -54,5 +53,21 @@ public class CarDatabase {
         */
         return cars.stream().filter(car -> car.getEngineType()
                 .equals(engineType)).collect(Collectors.toSet());
+    }
+
+    // 4. Get all cars from given brand
+    public Set<Car> getAllCarsWithGivenBrand(String brand){
+//        HashSet<Car> resultBrand = new HashSet<>();
+//        for(Car car : cars){
+//            if(car.getBrand().equals(brand)){
+//                resultBrand.add(car)
+//            }
+//        }
+//        return resultBrand;
+
+        // kolekcja na której bazuje nasz stream.przerabiamy na stream.funckja filtrujemy
+        // .(car)-pojedynczy element (zwraca wartość true/false).może dodać kolejną funkcję
+        // lub zwrócić ponownie do kolekcji tak jak w tym przypadku
+        return cars.stream().filter(car -> car.getBrand().equals(brand)).collect(Collectors.toSet());
     }
 }
