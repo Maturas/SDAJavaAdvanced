@@ -9,10 +9,10 @@ public class ThreadingExample {
     }
 
     public static void raceConditionExample() {
-        Counter counter = new Counter();
+        SynchronizedCounter synchronizedCounter = new SynchronizedCounter();
 
-        Thread threadA = new Thread(counter, "Thread A");
-        Thread threadB = new Thread(counter, "Thread B");
+        Thread threadA = new Thread(synchronizedCounter, "Thread A");
+        Thread threadB = new Thread(synchronizedCounter, "Thread B");
 
         threadA.start();
         threadB.start();

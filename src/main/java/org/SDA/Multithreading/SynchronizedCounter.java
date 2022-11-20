@@ -1,9 +1,9 @@
 package org.SDA.Multithreading;
 
-public class Counter implements Runnable {
+public class SynchronizedCounter implements Runnable {
     private Integer currentCount;
 
-    public Counter() {
+    public SynchronizedCounter() {
         this.currentCount = 1;
     }
 
@@ -15,7 +15,7 @@ public class Counter implements Runnable {
         currentCount--;
     }
 
-    public void increaseTo(Integer target) {
+    public synchronized void increaseTo(Integer target) {
         for (Integer i = 0; i < target; i++) {
             increase();
             try {
@@ -27,7 +27,7 @@ public class Counter implements Runnable {
         System.out.printf("%s after increase: %d\n", Thread.currentThread().getName(), currentCount);
     }
 
-    public void decreaseTo(Integer target) {
+    public synchronized void decreaseTo(Integer target) {
         for (Integer i = 0; i < target; i++) {
             decrease();
             try {
